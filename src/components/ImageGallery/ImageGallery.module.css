@@ -1,0 +1,20 @@
+.list {
+    list-style-type: none;
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.item {
+    height: 275px;
+    
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.item:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+}

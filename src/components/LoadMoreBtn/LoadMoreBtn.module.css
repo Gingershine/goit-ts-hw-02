@@ -1,0 +1,9 @@
+.button {
+    
+}
+
+.wraper {
+    display: flex;
+    justify-content: center;
+    padding-left: 40px;
+}
