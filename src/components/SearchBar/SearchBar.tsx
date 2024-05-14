@@ -1,16 +1,21 @@
 import toast, { Toaster } from 'react-hot-toast';
 import css from './SearchBar.module.css';
+import { FC, FormEvent } from'react';
 
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar:FC<SearchBarProps> = ({ onSearch }) => {
   
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     
-    const form = evt.target;
-    const query = form.elements.imageName.value;
+    const form = evt.target as HTMLFormElement;
+    const query = (form.elements.namedItem('imageName') as HTMLInputElement).value;
     
-    if (form.elements.imageName.value.trim() === '') {
+    
+    if (query.trim() === '') {
 toast.error('Please enter a valid image name');
       return;
     }
@@ -26,7 +31,7 @@ toast.error('Please enter a valid image name');
           <input
             className={css.input}
             type="text"
-            autoComplete="off"
+            autoComplete="on"
             autoFocus
             placeholder="Search images and photos"
             name='imageName'

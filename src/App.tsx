@@ -7,17 +7,19 @@ import Loader from './components/Loader/Loader';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import ImageModal from './components/ImageModal/ImageModal';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
+import { Image } from './types';
+
 
 
 
 function App() {
-  const [images, setImages] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(null);
-  const [isLoading, setisLoading] = useState(false);
-  const [isError, setisError] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [showBtn, setShowBtn] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);  
+  const [images, setImages] = useState<Image[] | []>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [isLoading, setisLoading] = useState<boolean>(false);
+  const [isError, setisError] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<Image|null>(null);
+  const [showBtn, setShowBtn] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);  
  
   
  useEffect(() => {
@@ -40,13 +42,13 @@ function App() {
     } fetchImages()
   }, [searchQuery, currentPage]);
   
-  const onSearchQuerySetup = (query) => {
+  const onSearchQuerySetup = (query:string) => {
     setSearchQuery(query);
     setImages([])
     setCurrentPage(1);
   }
   
- const openModal = (image) => {   
+ const openModal = (image:Image) => {   
    setSelectedImage(image);
 }  
    

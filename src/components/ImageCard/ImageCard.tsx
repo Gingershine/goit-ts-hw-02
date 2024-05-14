@@ -1,6 +1,12 @@
+import { Image } from '../../types';
 import css from './ImageCard.module.css';
 
-const ImageCard = ({ image, openModal}) => {
+interface ImageCardProps {
+  image: Image;
+  openModal: (image: Image) => void;
+}
+
+const ImageCard:React.FC<ImageCardProps> = ({ image, openModal}) => {
  
   const handleClick = () => {
   openModal(image);
